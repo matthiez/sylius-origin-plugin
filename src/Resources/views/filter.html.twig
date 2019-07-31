@@ -1,0 +1,37 @@
+{% form_theme form 'SyliusUiBundle:Form:theme.html.twig' %}
+
+{% set formPath = path('sylius_shop_product_index', {'slug': app.request.attributes.get('slug')}) %}
+
+{% set formRow = form_row(form, {"label": false}) %}
+
+<div class="ui segment grid">
+    <div class="two column mobile only">
+        <div class="ui accordion">
+            <div class="active title" style="font-weight: bold;">
+                &raquo;&nbsp;{{ "ecolos_sylius_origin_plugin.origin" | trans }}
+            </div>
+
+            <div class="content">
+                <form class="ui form" method="get" action="{{ formPath }}">
+                    {{ formRow | raw }}
+
+                    <button class="ui primary button">OK</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="two column tablet or lower hidden">
+        <form class="ui form" method="get" action="{{ formPath }}">
+            <div class="header item">
+                {{ form_label(form, 'ecolos_sylius_origin_plugin.origin') | striptags }}
+            </div>
+
+            {{ formRow | raw }}
+
+            <button class="ui primary button">OK</button>
+        </form>
+    </div>
+</div>
+
+

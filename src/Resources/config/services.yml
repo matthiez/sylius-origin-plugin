@@ -1,0 +1,19 @@
+services:
+  ecolos_sylius_origin_plugin.form.extension.type.product:
+    class: Ecolos\SyliusOriginPlugin\Form\Extension\ProductTypeExtension
+    tags:
+      - { name: form.type_extension, extended_type: Sylius\Bundle\ProductBundle\Form\Type\ProductType }
+
+  ecolos_sylius_origin_plugin.form.type.origin_filter:
+    class: Ecolos\SyliusOriginPlugin\Form\Type\Filter\OriginFilterType
+    arguments: ["@sylius.context.channel", "@sylius.repository.product", "@request_stack", "@sylius.repository.taxon"]
+    tags:
+      - { name: form.type , alias: ecolos_sylius_origin_plugin_origin}
+
+  ecolos_sylius_origin_plugin.grid.filter.origins:
+    class: Ecolos\SyliusOriginPlugin\Grid\Filter\OriginFilter
+    tags:
+      - name: sylius.grid_filter
+        type: ecolos_origins
+        form_type: Ecolos\SyliusOriginPlugin\Form\Type\Filter\OriginFilterType
+    arguments: ["@sylius.repository.product"]

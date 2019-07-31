@@ -1,0 +1,7 @@
+sylius_grid:
+  grids:
+    sylius_shop_product:
+      filters:
+        ecolos_origins:
+          type: ecolos_origins
+          template: '@EcolosSyliusOriginPlugin/Resources/views/filter.html.twig'
